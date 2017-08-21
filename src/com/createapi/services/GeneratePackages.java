@@ -4,11 +4,11 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.List;
+import java.util.Set;
 
 public class GeneratePackages {
 
-	public static void generateCom(String nameProject, String path, List<String> listModels) {
+	public static void generateCom(String nameProject, String path, Set<String> set) {
 
 		String pathCom = path + "/com/" + nameProject.toLowerCase();
 
@@ -19,10 +19,10 @@ public class GeneratePackages {
 			generateFileCorsFilter(pathCom);
 			generateFileApplication(pathCom, nameProject);
 
-			generateFileModels(listModels, pathCom, nameProject);
-			generateFileControllers(listModels, pathCom, nameProject);
-			generateFileServices(listModels, pathCom, nameProject);
-			generateFileRepositories(listModels, pathCom, nameProject);
+			generateFileModels(set, pathCom, nameProject);
+			generateFileControllers(set, pathCom, nameProject);
+			generateFileServices(set, pathCom, nameProject);
+			generateFileRepositories(set, pathCom, nameProject);
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -96,11 +96,11 @@ public class GeneratePackages {
 		}
 	}
 
-	private static void generateFileModels(List<String> listModels, String path, String nameProject) {
+	private static void generateFileModels(Set<String> set, String path, String nameProject) {
 
 		try {
 
-			for (String string : listModels) {
+			for (String string : set) {
 
 				File model = new File(path + "/models" + "/" + string + ".java");
 				BufferedWriter modelWriter = new BufferedWriter(new FileWriter(model));
@@ -127,11 +127,11 @@ public class GeneratePackages {
 
 	}
 
-	private static void generateFileControllers(List<String> listModels, String path, String nameProject) {
+	private static void generateFileControllers(Set<String> set, String path, String nameProject) {
 
 		try {
 
-			for (String model : listModels) {
+			for (String model : set) {
 
 				File controller = new File(path + "/controllers" + "/" + model + "Controller.java");
 				BufferedWriter controllerWriter = new BufferedWriter(new FileWriter(controller));
@@ -158,11 +158,11 @@ public class GeneratePackages {
 
 	}
 
-	private static void generateFileServices(List<String> listModels, String path, String nameProject) {
+	private static void generateFileServices(Set<String> set, String path, String nameProject) {
 
 		try {
 
-			for (String model : listModels) {
+			for (String model : set) {
 
 				File service = new File(path + "/services" + "/" + model + "Service.java");
 				BufferedWriter serviceWriter = new BufferedWriter(new FileWriter(service));
@@ -189,11 +189,11 @@ public class GeneratePackages {
 
 	}
 
-	private static void generateFileRepositories(List<String> listModels, String path, String nameProject) {
+	private static void generateFileRepositories(Set<String> set, String path, String nameProject) {
 
 		try {
 
-			for (String model : listModels) {
+			for (String model : set) {
 
 				File repository = new File(path + "/repositories" + "/" + model + "Repository.java");
 				BufferedWriter repositorytWriter = new BufferedWriter(new FileWriter(repository));
