@@ -4,9 +4,9 @@ import java.io.File;
 
 public class GenerateFolders {
 
-	public static File generateRootFolder(String nameProject) {
+	public static File generateRootFolder(String pathProject, String nameProject) {
 
-		File folderProject = new File(nameProject);
+		File folderProject = new File(pathProject + "/" + nameProject);
 		folderProject.mkdirs();
 		return folderProject;
 	}

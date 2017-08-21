@@ -19,6 +19,8 @@ public class Start {
 			Scanner input = new Scanner(System.in);
 
 			String nameProject = Inputs.inputNameProject(input);
+			
+			String pathProject = Inputs.inputPathProject();
 
 			int amountModels = Inputs.inputAmountModels(input);
 
@@ -27,7 +29,7 @@ public class Start {
 			input.close();
 
 			// projeto/
-			File folderProject = GenerateFolders.generateRootFolder(nameProject);
+			File folderProject = GenerateFolders.generateRootFolder(pathProject, nameProject);
 
 			// Gerando POM do projeto/pom.xml
 			GenerateFiles.generatePomXml(nameProject, folderProject.getPath());
